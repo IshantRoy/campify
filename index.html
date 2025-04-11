@@ -199,6 +199,29 @@
 
       <button type="submit">Login</button>
     </form>
+    <script>
+      document.querySelector('.login-form').addEventListener('submit', function (e) {
+        e.preventDefault(); // prevent form from submitting normally
+    
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+    
+        // Dummy credentials
+        const dummyUser = {
+          username: "admin",
+          password: "campify123"
+        };
+    
+        if (username === dummyUser.username && password === dummyUser.password) {
+          alert("Login successful!");
+          // Redirect to dashboard (you can create dashboard.html separately)
+          window.location.href = "dashboard.html";
+        } else {
+          alert("Invalid username or password!");
+        }
+      });
+    </script>
+    
   </div>
 </body>
 </html>
