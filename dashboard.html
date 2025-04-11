@@ -1,30 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Dashboard - Campify</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <title>Campify Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(rgba(106, 90, 205, 0.6), rgba(72, 61, 139, 0.6)),
-                  url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background: linear-gradient(rgba(106, 90, 205, 0.7), rgba(72, 61, 139, 0.7)),
+        url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
       background-size: cover;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      color: #fff;
-      text-align: center;
-    }
-
-    .fade-in {
-      animation: fadeIn 1.2s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      color: white;
+      padding-bottom: 80px;
     }
 
     header {
@@ -45,34 +33,102 @@
       font-size: 1.5rem;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-top: 2rem;
-      margin-bottom: 1.5rem;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
-    }
+   .dashboard-wrapper {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
+  height: calc(100vh - 100px); /* Full height minus header and footer */
+  box-sizing: border-box;
+}
+
+.left-column,
+.right-column {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.left-column .card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  overflow: hidden;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
 
     .card {
-      display: block;
-      max-width: 320px;
-      margin: 1rem auto;
-      padding: 1.2rem 1rem;
       background: rgba(255, 255, 255, 0.15);
+      padding: 20px;
       border-radius: 16px;
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.1rem;
-      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
       border: 1px solid rgba(255, 255, 255, 0.18);
-      transition: transform 0.3s ease, background 0.3s ease;
+      color: white;
+      text-decoration: none;
     }
 
-    .card:hover {
-      transform: scale(1.05);
-      background: rgba(255, 255, 255, 0.25);
+    .card h3 {
+      margin-top: 0;
+      color: #fff;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin: 8px 0;
+    }
+
+    .profile-card {
+      text-align: center;
+    }
+
+    .student-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+      border: 3px solid #fff;
+    }
+
+    canvas {
+      max-width: 100%;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.4);
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      backdrop-filter: blur(6px);
+    }
+
+    footer nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer nav a:hover {
+      text-decoration: underline;
+      color: #dcdcff;
     }
 
     @media (max-width: 600px) {
@@ -81,28 +137,109 @@
         text-align: center;
       }
 
-      h1 {
-        font-size: 2rem;
+      .dashboard-wrapper {
+        flex-direction: column;
       }
 
-      .card {
-        width: 90%;
-        font-size: 1rem;
+      footer nav a {
+        display: block;
+        margin: 10px 0;
       }
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-  <header class="fade-in">
+  <header>
     <img src="logo.jpg" alt="Campify Logo" />
     <h2>Campify</h2>
   </header>
 
-  <h1 id="welcome" class="fade-in">Welcome</h1>
+  <div class="dashboard-wrapper">
+    <!-- Left Side -->
+    <div class="left-column">
+      <a href="academics.html" class="card">
+        <h3>📚 Academics</h3>
+        <p>View courses, assignments and more</p>
+      </a>
+      <div class="card">
+        <h3>🚧 Coming Soon</h3>
+        <p>More features are on the way!</p>
+      </div>
+      <div class="card">
+        <h3>🚧 Coming Soon</h3>
+        <p>Stay tuned for updates.</p>
+      </div>
+    </div>
 
-  <a id="academicsLink" href="academics.html" class="card fade-in">1. 📚 Academics</a>
-  <div class="card fade-in">2. 🚧 Coming Soon</div>
-  <div class="card fade-in">3. 🚧 Coming Soon</div>
-  <a id="profileLink" href="#" class="card fade-in">4. 👤 Profile</a>
+    <!-- Right Side -->
+    <div class="right-column">
+      <div class="card profile-card">
+        <img src="https://via.placeholder.com/150" alt="Student Photo" class="student-image" />
+        <h2>Aditya Raj</h2>
+        <p>🎓 Roll No: 20221CCS0093</p>
+      </div>
+
+      <div class="card">
+        <h3>📊 Attendance Overview</h3>
+        <canvas id="attendanceBarChart" height="250"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <nav>
+      <a href="#">👤 Profile</a>
+      <a href="academics.html">📚 Academics</a>
+      <a href="#">🌐 Opportunities</a>
+      <a href="#">🤖 AI Chatbot</a>
+    </nav>
+  </footer>
+
+  <script>
+    const barData = {
+      labels: ['DSA', 'Math', 'OS', 'DBMS', 'CyberSec'],
+      datasets: [
+        {
+          label: 'Classes Attended',
+          data: [28, 25, 30, 27, 26],
+          backgroundColor: '#4CAF50',
+          borderRadius: 5
+        },
+        {
+          label: 'Total Classes',
+          data: [30, 28, 32, 30, 30],
+          backgroundColor: '#2196F3',
+          borderRadius: 5
+        }
+      ]
+    };
+
+    const barConfig = {
+      type: 'bar',
+      data: barData,
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Number of Classes'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Subjects'
+            }
+          }
+        }
+      }
+    };
+
+    new Chart(document.getElementById('attendanceBarChart'), barConfig);
+  </script>
 </body>
 </html>
