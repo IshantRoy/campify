@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Campify Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(rgba(106, 90, 205, 0.6), rgba(72, 61, 139, 0.6)), 
+                  url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      color: #fff;
+    }
+
+    .fade-in {
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header {
+      background: rgba(72, 61, 139, 0.8);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      backdrop-filter: blur(6px);
+    }
+
+    header img {
+      height: 40px;
+    }
+
+    header h2 {
+      font-size: 1.5rem;
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #fff;
+      margin-bottom: 2rem;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .login-form {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      transition: transform 0.3s ease;
+    }
+
+    .login-form:hover {
+      transform: scale(1.02);
+    }
+
+    .login-form h2 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      position: relative;
+      margin-top: 1.8rem;
+    }
+
+    .input-icon {
+      position: absolute;
+      top: 50%;
+      left: 0.9rem;
+      transform: translateY(-50%);
+      font-size: 1.4rem;
+      color: #ccc;
+      pointer-events: none;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 1.2rem 0.75rem 1.2rem 2.8rem;
+      font-size: 1.15rem;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      outline: none;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus {
+      box-shadow: 0 0 0 2px #6a5acd;
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .form-group label {
+      position: absolute;
+      top: 50%;
+      left: 2.8rem;
+      transform: translateY(-50%);
+      color: #ccc;
+      font-size: 1rem;
+      pointer-events: none;
+      transition: 0.3s ease;
+      background: transparent;
+      padding: 0 6px;
+    }
+
+    .form-group input:focus + label,
+    .form-group input:not(:placeholder-shown) + label {
+      top: -0.7rem;
+      left: 2.4rem;
+      font-size: 0.75rem;
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 6px;
+      color: #dcdcff;
+    }
+
+    .login-form button {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.8rem;
+      background: #6a5acd;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .login-form button:hover {
+      box-shadow: 0 0 20px #6a5acd;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .login-form {
+        margin: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="fade-in">
+    <img src="logo.jpg" alt="Campify Logo" />
+    <h2>Campify</h2>
+  </header>
+
+  <div class="main-content fade-in">
+    <h1>Welcome Back</h1>
+    <form class="login-form" method="POST" action="/login">
+      <h2>Login</h2>
+
+      <div class="form-group">
+        <i class="fas fa-user input-icon"></i>
+        <input type="text" id="username" name="username" required placeholder=" " />
+        <label for="username">Username</label>
+      </div>
+
+      <div class="form-group">
+        <i class="fas fa-lock input-icon"></i>
+        <input type="password" id="password" name="password" required placeholder=" " />
+        <label for="password">Password</label>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</body>
+</html>

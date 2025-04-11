@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Academics - Campify</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(rgba(106, 90, 205, 0.6), rgba(72, 61, 139, 0.6)),
+                  url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      color: #fff;
+      text-align: center;
+    }
+
+    .fade-in {
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header {
+      background: rgba(72, 61, 139, 0.8);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      backdrop-filter: blur(6px);
+    }
+
+    header img {
+      height: 40px;
+    }
+
+    header h2 {
+      font-size: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin: 2rem 0 1.5rem;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .option {
+      display: block;
+      max-width: 300px;
+      margin: 1rem auto;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .option:hover {
+      transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    #back {
+      max-width: 120px;
+      font-size: 1rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .option {
+        width: 90%;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="fade-in">
+    <img src="logo.jpg" alt="Campify Logo" />
+    <h2>Campify</h2>
+  </header>
+
+  <h1 class="fade-in">📚 Academics</h1>
+
+  <a class="option fade-in" id="attend" href="#">1. Attendance</a>
+  <a class="option fade-in" id="classes" href="#">2. Classes</a>
+  <a class="option fade-in" id="exams" href="#">3. Exam</a>
+  <div class="option fade-in">4. Other</div>
+
+  <a id="back" href="#" class="option fade-in">⬅ Back</a>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const username = params.get('username');
+    document.getElementById("attend").href = `/attendance?username=${username}`;
+    document.getElementById("classes").href = `/classes?username=${username}`;
+    document.getElementById("exams").href = `/exams?username=${username}`;
+    document.getElementById("back").href = `/dashboard?username=${username}`;
+  </script>
+</body>
+</html>
